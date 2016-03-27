@@ -157,8 +157,6 @@ bool CtFr::WinCheck(int move){
     // Check Left
     while(curSpotCheck / CtFr::NUM_COLS == row && CtFr::marks[curSpotCheck] == CtFr::marks[move] && numInLine < CtFr::NUM_IN_ROW_TO_WIN){
         numInLine = numInLine + 1;
-        //cout << "Checking left:" << endl;
-        //cout << curSpotCheck << endl;
         curSpotCheck = curSpotCheck + 1;
     }
     
@@ -170,8 +168,6 @@ bool CtFr::WinCheck(int move){
         // Check right
         while(curSpotCheck / CtFr::NUM_COLS == row && CtFr::marks[curSpotCheck] == CtFr::marks[move] && numInLine < CtFr::NUM_IN_ROW_TO_WIN){
             numInLine = numInLine + 1;
-            //cout << "Checking right:" << endl;
-            //cout << curSpotCheck << endl;
             curSpotCheck = curSpotCheck - 1;
         }
     }
@@ -202,6 +198,50 @@ bool CtFr::WinCheck(int move){
     }
     
     // Check Diagonals
+    if(!winOccured){
+        curSpotCheck = move;
+        numInLine = 0;
+        // Check Top left
+        while(curSpotCheck >= 0 && curSpotCheck < CtFr::NUM_SPACES && CtFr::marks[curSpotCheck] == CtFr::marks[move] && numInLine < CtFr::NUM_IN_ROW_TO_WIN){
+
+            numInLine = numInLine + 1;
+            curSpotCheck = curSpotCheck + CtFr::NUM_COLS + 1;
+        }
+        curSpotCheck = move - CtFr::NUM_COLS - 1;
+
+        // Check Bottom Right
+        while(curSpotCheck >= 0 && curSpotCheck < CtFr::NUM_SPACES && CtFr::marks[curSpotCheck] == CtFr::marks[move] && numInLine < CtFr::NUM_IN_ROW_TO_WIN){
+
+            numInLine = numInLine + 1;
+            curSpotCheck = curSpotCheck - CtFr::NUM_COLS - 1;
+        }
+        if(numInLine == CtFr::NUM_IN_ROW_TO_WIN){
+            winOccured = true;
+        }
+        else{
+            curSpotCheck = move;
+            numInLine = 0;
+            // Check Top Right
+            while(curSpotCheck >= 0 && curSpotCheck < CtFr::NUM_SPACES && CtFr::marks[curSpotCheck] == CtFr::marks[move] && numInLine < CtFr::NUM_IN_ROW_TO_WIN){
+                numInLine = numInLine + 1;
+                curSpotCheck = curSpotCheck + CtFr::NUM_COLS - 1;
+            }
+            
+            curSpotCheck = move - CtFr::NUM_COLS + 1;
+            // Check Bottom Left
+            while(curSpotCheck >= 0 && curSpotCheck < CtFr::NUM_SPACES && CtFr::marks[curSpotCheck] == CtFr::marks[move] && numInLine < CtFr::NUM_IN_ROW_TO_WIN){
+                numInLine = numInLine + 1;
+                curSpotCheck = curSpotCheck - CtFr::NUM_COLS + 1;
+            }
+            
+            if(numInLine == CtFr::NUM_IN_ROW_TO_WIN){
+                winOccured = true;
+            }
+        }
+        
+    }
+    
+
     if(numInLine == CtFr::NUM_IN_ROW_TO_WIN){
         winOccured = true;
     }
