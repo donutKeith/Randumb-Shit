@@ -16,6 +16,7 @@
 #include "GameVars.h"
 #include "TicTacToe.h"
 #include "ConnectFour.h"
+#include "Tetris.h"
 
 using namespace std;
 
@@ -60,12 +61,14 @@ int main(int argc, char** argv) {
             cout << endl;
             cout << "2: Connect Four";
             cout << endl;
+            cout << "3: Tetris";
+            cout << endl;
             
             // Get player choice
             cin >> gameChoice;
 
             // Check if it was a valid choice
-            if(gameChoice >= 0 && gameChoice <= 2){
+            if(gameChoice >= 0 && gameChoice <= 3){
                 validGameChoice = true;
             }
             else{
@@ -75,25 +78,31 @@ int main(int argc, char** argv) {
         }
   
         // Handle the users input and determine what game we should play
-        if(gameChoice == 0){
-            donePlaying = true;
-            cout << "Okay bye, Have a nice day!";    
-        }
-        else if(gameChoice == 1){// Play tic tac toe
-            TTT::Play_TIC_TAC_TOE();
-            validGameChoice = false;
-        }
-        else if(gameChoice == 2){// Play connect 4
-            CtFr::Play_ConnectFour();
-            validGameChoice = false;
-            //DrawBoard(7, 6);
-        }
-        else{
-            cout << "Unexpected Input! This should never happen since we checked this above but if this code gets modified it is an extra check";
-            donePlaying = true;
+        switch(gameChoice){
+            case 0:
+                donePlaying = true;
+                cout << "Okay bye, Have a nice day!";    
+                break;
+            case 1:// Play tic tac toe
+                TTT::Play_TIC_TAC_TOE();
+                validGameChoice = false;
+                break;
+            case 2:// Play connect 4
+                CtFr::Play_ConnectFour();
+                validGameChoice = false;
+                break;
+            case 3:
+                Tet::Play_Tetris();
+                validGameChoice = false;
+                break;
+            default:
+                cout << "Unexpected Input! This should never happen since we checked this above but if this code gets modified it is an extra check";
+                donePlaying = true;
+                break;
         }
     }
 
+    
     return 0;
 }
 

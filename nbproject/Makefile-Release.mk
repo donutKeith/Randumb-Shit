@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/ConnectFour.o \
 	${OBJECTDIR}/GameFuncs.o \
+	${OBJECTDIR}/Tetris.o \
 	${OBJECTDIR}/TicTacToe.o \
 	${OBJECTDIR}/main.o
 
@@ -74,6 +75,11 @@ ${OBJECTDIR}/GameFuncs.o: GameFuncs.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GameFuncs.o GameFuncs.cpp
+
+${OBJECTDIR}/Tetris.o: Tetris.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Tetris.o Tetris.cpp
 
 ${OBJECTDIR}/TicTacToe.o: TicTacToe.cpp 
 	${MKDIR} -p ${OBJECTDIR}

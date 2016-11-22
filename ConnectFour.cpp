@@ -133,8 +133,7 @@ void CtFr::DrawBoard(int width, int height){
                 cout << "]";
                 colCount = colCount + 1;
                 spot--;
-            }
-            
+            }            
         }
         cout << endl;
         rowCount = rowCount + 1;

@@ -21,7 +21,7 @@ namespace CtFr{
     const int NUM_COLS = 7;
     const int NUM_ROWS = 6;
     const int NUM_SPACES = NUM_COLS * NUM_ROWS;
-    const char EMPTY_SPACE = '_';
+    const char EMPTY_SPACE = ' ';
     const int FULL_COL = -1;
     const int NUM_IN_ROW_TO_WIN = 4;
     // --------------------------------------------
